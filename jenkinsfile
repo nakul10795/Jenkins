@@ -1,0 +1,30 @@
+#Declarative Pipeline Script
+pipeline {
+    agent any
+    parameters {
+        booleanParam(name: 'Static_Check', description: 'Want to perform Static code analysis?')
+ 
+        booleanParam(name: 'QA', description: 'Want to perform QA testing?')
+ 
+        booleanParam(name: 'Unit_Test', description: 'Want to perform Unit Testing?')
+ 
+        string(name: 'Success_Email', description: 'Please enter Success Notification email?')
+ 
+        string(name: 'Failure_Email', description: 'Please enter Failure Notification email?')
+    }
+    stages {
+        stage('Git Pull') {
+            steps {
+                echo "Hello ${params.NAME}"
+ 
+                echo "Job Details: ${params.DESC}"
+ 
+                echo "Skip Running Test case ?: ${params.SKIP_TEST}"
+ 
+                echo "Branch Choice: ${params.BRANCH}"
+ 
+                echo "SONAR Password: ${params.SONAR_SERVER_PWD}"
+            }
+        }
+    }
+}
